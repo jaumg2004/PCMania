@@ -9,11 +9,22 @@ public class Cliente {
     public Cliente() {
     }
 
+    public void comprar(Computador computador){
+        for(int i = 0; i<10; i++){
+            if(this.computador[i]==null){
+                this.computador[i] = computador;
+                break;
+            }
+        }
+    }
+
     public float calcularCompra(){
         float soma = 0;
+
         for(int i = 0; i < 10; i++){
             if(computador[i]!=null){
                 soma += computador[i].preco;
+
             }
         }
         return soma;

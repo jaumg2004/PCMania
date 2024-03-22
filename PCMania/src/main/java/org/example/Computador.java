@@ -4,9 +4,9 @@ public class Computador {
 
     public String marca;
     public float preco;
-    Hardware hardware = new Hardware();
-    SistemaOperacional sistemaOperacional = new SistemaOperacional();
-    MemoriaUSB mUSB = new MemoriaUSB();
+    Hardware hardware;
+    SistemaOperacional sistemaOperacional;
+    MemoriaUSB mUSB;
 
     public Computador(Hardware hardware, SistemaOperacional sistemaOperacional) {
         this.hardware = hardware;
@@ -14,8 +14,7 @@ public class Computador {
     }
 
     public void addMemoriaUSB(MemoriaUSB musb){
-        mUSB.nome = musb.nome;
-        mUSB.capacidade = musb.capacidade;
+        this.mUSB = musb;
     }
 
     public void mostrarPCConfigs(){

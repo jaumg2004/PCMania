@@ -7,12 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Computador computador[] = new Computador[10];
-        Hardware hardware = new Hardware();
-        SistemaOperacional so = new SistemaOperacional();
         Cliente cliente = new Cliente();
-        MemoriaUSB musb = new MemoriaUSB();
-        int menu, i=0;
+        int menu;
         String M;
 
         System.out.println("Bem-vindo a loja PCMania!");
@@ -40,73 +36,79 @@ public class Main {
         while(menu!=5){
             switch(menu){
                 case 1:
-                    hardware.nome = "Pentium Core I3";
-                    hardware.capacidade = 8;
-                    so.nome = "Linux Ubuntu";
-                    so.tipo = 32;
-                    computador[i] = new Computador(hardware, so);
+                    Computador comp1 = new Computador(new Hardware(), new SistemaOperacional());
 
-                    computador[i].marca = "Positivo";
-                    computador[i].preco = 3300;
+                    comp1.hardware.nome = "Pentium Core I3";
+                    comp1.hardware.capacidade = 8;
+                    comp1.sistemaOperacional.nome = "Linux Ubuntu";
+                    comp1.sistemaOperacional.tipo = 32;
+
+                   comp1.marca = "Positivo";
+                   comp1.preco = 3300;
 
                     System.out.println("Deseja adicionar uma memória USB?[S/N]");
                     M = scanner.next();
                     if(M.equalsIgnoreCase("S")){
+                        MemoriaUSB musb = new MemoriaUSB();
                         musb.nome = "PenDrive";
                         musb.capacidade = 16;
-                        computador[i].addMemoriaUSB(musb);
+                        comp1.addMemoriaUSB(musb);
                     }
-                    i++;
+                    cliente.comprar(comp1);
+
                     break;
                 case 2:
 
-                    hardware.nome = "Pentium Core I5";
-                    hardware.capacidade = 1000;
-                    so.nome = "Windows 8";
-                    so.tipo = 64;
-                    computador[i] = new Computador(hardware, so);
+                    Computador comp2 = new Computador(new Hardware(), new SistemaOperacional());
+                    comp2.hardware.nome = "Pentium Core I5";
+                    comp2.hardware.capacidade = 1000;
+                    comp2.sistemaOperacional.nome = "Windows 8";
+                    comp2.sistemaOperacional.tipo = 64;
 
-                    computador[i].marca = "Acer";
-                    computador[i].preco = 8800;
+
+                    comp2.marca = "Acer";
+                    comp2.preco = 8800;
 
                     System.out.println("Deseja adicionar uma memória USB?[S/N]");
                     M = scanner.next();
                     if(M.equalsIgnoreCase("S")){
+                        MemoriaUSB musb = new MemoriaUSB();
                         musb.nome = "PenDrive";
                         musb.capacidade = 32;
-                        computador[i].addMemoriaUSB(musb);
+                        comp2.addMemoriaUSB(musb);
                     }
-                    i++;
+                    cliente.comprar(comp2);
 
                     break;
 
                 case 3:
 
-                    hardware.nome = "Pentium Core I7";
-                    hardware.capacidade = 2000;
-                    so.nome = "Windows 10";
-                    so.tipo = 64;
-                    computador[i] = new Computador(hardware, so);
+                    Computador comp3 = new Computador(new Hardware(), new SistemaOperacional());
+                    comp3.hardware.nome = "Pentium Core I7";
+                    comp3.hardware.capacidade = 2000;
+                    comp3.sistemaOperacional.nome = "Windows 10";
+                    comp3.sistemaOperacional.tipo = 64;
 
-                    computador[i].marca = "Vaio";
-                    computador[i].preco = 4800;
+                    comp3.marca = "Vaio";
+                    comp3.preco = 4800;
 
                     System.out.println("Deseja adicionar uma memória USB?[S/N]");
                     M = scanner.next();
                     if(M.equalsIgnoreCase("S")){
+                        MemoriaUSB musb = new MemoriaUSB();
                         musb.nome = "HD Externo";
                         musb.capacidade = 1000;
-                        computador[i].addMemoriaUSB(musb);
+                        comp3.addMemoriaUSB(musb);
                     }
-                    i++;
+                    cliente.comprar(comp3);
 
                     break;
 
                 case 4:
 
                     for(int j = 0; j<10;j++){
-                        if(computador[j]!=null){
-                            computador[j].mostrarPCConfigs();
+                        if(cliente.computador[j]!=null){
+                            cliente.computador[j].mostrarPCConfigs();
                         }
                     }
 
